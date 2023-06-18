@@ -10,7 +10,9 @@
   },
   "plugins": ["react"],
   "rules": {
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "no-debugger": "off",
+    "react/prop-types": 0
   },
   "settings": {
     "react": {

@@ -1,14 +1,17 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Container } from '@mui/material';
 
-function container({ children }) {
+function Wrapper() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="sm">{children}</Container>
+      <Container maxWidth="sm">
+        <Outlet />
+      </Container>
     </React.Fragment>
   );
 }
 
-export default container;
+export default Wrapper;
