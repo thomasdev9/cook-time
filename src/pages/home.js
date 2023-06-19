@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Typography, Box, Grid } from '@mui/material';
+import SearchBar from '../components/search-bar';
 
 function Home() {
+  const [searchQuery, setSearchQuery] = useState('');
+  console.log(searchQuery);
   return (
     <Box>
       <Grid container direction="column">
@@ -11,6 +14,7 @@ function Home() {
         <Typography variant="h4" gutterBottom>
           What would you like to cook today?
         </Typography>
+        <SearchBar setSearchQuery={setSearchQuery} />
       </Grid>
     </Box>
   );
