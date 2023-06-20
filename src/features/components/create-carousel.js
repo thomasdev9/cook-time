@@ -17,7 +17,7 @@ const HeaderWrapper = styled.div`
   justify-content: space-between;
 `;
 
-function CreateCarousel({ title, subtitle, slides, slidesPerView, spaceBetween }) {
+function CreateCarousel({ title, subtitle, slides, slidesPerView = 'auto', spaceBetween }) {
   return (
     <Container>
       <HeaderWrapper>
