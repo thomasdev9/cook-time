@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Typography, Box, Grid } from '@mui/material';
-import SearchBar from '../components/search-bar';
+import SearchBar from '../features/ui/search-bar';
 
 function Home() {
   const [searchQuery, setSearchQuery] = useState('');
