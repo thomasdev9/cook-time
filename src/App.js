@@ -5,6 +5,9 @@ import { createTheme, ThemeProvider } from '@mui/material';
 const theme = createTheme({
   palette: {
     mode: 'light',
+    background: {
+      default: 'rgb(247, 247, 247)',
+    },
   },
 });
 
