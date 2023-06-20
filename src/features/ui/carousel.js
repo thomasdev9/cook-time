@@ -16,7 +16,7 @@ const Container = styled.div`
 
 function carousel({
   spaceBetween = 50,
-  slidesPerView = 3,
+  slidesPerView = 'auto',
   navigation = false,
   pagination = false,
   scrollbar = false,
