@@ -18,7 +18,7 @@ function Home() {
         </Typography>
         <SearchBar setSearchQuery={setSearchQuery} />
         <CreateCarousel
-          title="Recommended"
+          title="Categories"
           subtitle="View All"
           slides={categoriesChips}
           slidesPerView="auto"
