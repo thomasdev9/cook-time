@@ -1,4 +1,6 @@
 import ChipComponent from '../../features/ui/chip-component';
+import { getRecipeData } from '../utils';
+import CardComponent from '../../features/ui/card-component';
 
 export const categoriesChips = [
   <ChipComponent label="pizza" key={1} />,
@@ -9,3 +11,11 @@ export const categoriesChips = [
   <ChipComponent label="vegan" key={6} />,
   <ChipComponent label="sushi" key={7} />,
 ];
+
+export const getRecipesCards = (recipes) => {
+  const cards = recipes?.map((recipe, index) => {
+    const data = getRecipeData(recipe?.recipe);
+    return <CardComponent {...data} key={index} />;
+  });
+  return cards;
+};

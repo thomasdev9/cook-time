@@ -25,3 +25,12 @@ const categoriesIcons = {
 export const getCategoryIcon = (iconName) => {
   return categoriesIcons[iconName];
 };
+
+export const getRecipeData = (recipe) => {
+  return {
+    title: recipe?.label,
+    image: recipe?.image,
+    totalTime: `${recipe?.totalTime}'`,
+    cuisineType: recipe?.cuisineType[0],
+  };
+};

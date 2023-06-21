@@ -1,14 +1,27 @@
 import React from 'react';
-import { Card, CardMedia, CardContent, Typography } from '@mui/material';
+import { Card, CardMedia, CardContent } from '@mui/material';
 import styled from 'styled-components';
-import { FaUserAlt } from 'react-icons/fa';
 
 const style = {
-  width: window?.screen?.width > 600 ? '240px' : '180px',
+  width: window?.screen?.width > 600 ? '156px' : '156px',
   boxShadow: 'rgba(0, 0, 0, 0.08) 4px 4px 16px 0px',
-  marginBottom: '50px',
+  marginBottom: '10px',
   borderRadius: '8px',
 };
+
+const Title = styled.h6`
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  white-space: pre-wrap;
+  font-size: 14px;
+  font-weight: 700;
+  color: rgb(51, 51, 51);
+  line-height: 20px;
+  margin-bottom: 5px;
+  height: 40px;
+`;
 
 const InfoWrapper = styled.div`
   display: flex;
@@ -22,6 +35,7 @@ const CategoryLabel = styled.span`
   font-size: 12px;
   font-weight: 700;
   padding-right: 5px;
+  text-transform: capitalize;
 
   @media only screen and (max-width: 600px) {
     padding-right: 10px;
@@ -37,30 +51,15 @@ const InfoLabel = styled.div`
   flex-direction: row;
 `;
 
-const StyledLabelIcon = styled(FaUserAlt)`
-  padding-right: 5px;
-  font-size: 16px;
-
-  @media only screen and (min-width: 600px) {
-    display: none;
-  }
-`;
-
-function CardComponent({ title, category, servings, calories, image }) {
+function CardComponent({ title, totalTime, cuisineType, image }) {
   return (
     <Card sx={style}>
-      <CardMedia component="img" alt="card-img" height="170" image={image}></CardMedia>
+      <CardMedia component="img" alt="card-img" height="125" image={image}></CardMedia>
       <CardContent>
-        <Typography gutterBottom variant="h6" component="div" sx={{ color: 'text.main', fontSize: '16px' }}>
-          {title}
-        </Typography>
+        <Title>{title}</Title>
         <InfoWrapper>
-          <CategoryLabel>{category}</CategoryLabel>
-          <InfoLabel>
-            <StyledLabelIcon />
-            {servings} servings
-          </InfoLabel>
-          {window?.screen?.width > 600 && <InfoLabel>{calories} kcal </InfoLabel>}
+          <CategoryLabel>{cuisineType}</CategoryLabel>
+          <InfoLabel>{totalTime}</InfoLabel>
         </InfoWrapper>
       </CardContent>
     </Card>
