@@ -8,7 +8,7 @@ const styles = {
 
 function SearchBar({ setSearchQuery }) {
   return (
-    <form>
+    <form style={{ marginBottom: '35px' }}>
       <TextField
         id="search-bar"
         className="text"

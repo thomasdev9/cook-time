@@ -11,7 +11,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-  padding: 20px 0px;
+  padding: 10px 0px;
 `;
 
 function carousel({

@@ -7,7 +7,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 40px 0px;
+  padding: 15px 0px;
 `;
 
 const HeaderWrapper = styled.div`
