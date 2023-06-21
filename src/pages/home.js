@@ -7,6 +7,7 @@ import { categoriesChips } from '../shared/setup/home';
 function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   console.log(searchQuery);
+
   return (
     <Box>
       <Grid container direction="column">
