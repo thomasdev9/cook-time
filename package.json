@@ -46,12 +46,15 @@
     ]
   },
   "devDependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
     "eslint": "^8.43.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.8.8",
+    "react-redux": "^8.1.1",
     "react-router-dom": "^6.13.0",
+    "redux": "^4.2.1",
     "styled-components": "^6.0.0-rc.3"
   }
 }
