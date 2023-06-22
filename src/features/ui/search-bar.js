@@ -3,12 +3,15 @@ import { InputAdornment, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
 const styles = {
-  borderRadius: '25px',
+  borderRadius: '5px',
+  background: 'rgb(247, 247, 247)',
+  border: 'none',
+  '& fieldset': { border: 'none' },
 };
 
 function SearchBar({ setSearchQuery }) {
   return (
-    <form style={{ marginBottom: '35px' }}>
+    <form>
       <TextField
         id="search-bar"
         className="text"
