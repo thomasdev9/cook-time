@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardMedia, CardContent } from '@mui/material';
 import styled from 'styled-components';
+import { formatTime } from '../../shared/utils';
 
 const style = {
   width: window?.screen?.width > 600 ? '156px' : '156px',
@@ -36,6 +37,10 @@ const CategoryLabel = styled.span`
   font-weight: 700;
   padding-right: 5px;
   text-transform: capitalize;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 70px;
 
   @media only screen and (max-width: 600px) {
     padding-right: 10px;
@@ -59,7 +64,7 @@ function CardComponent({ title, totalTime, cuisineType, image }) {
         <Title>{title}</Title>
         <InfoWrapper>
           <CategoryLabel>{cuisineType}</CategoryLabel>
-          <InfoLabel>{totalTime}</InfoLabel>
+          <InfoLabel>{formatTime(totalTime)}</InfoLabel>
         </InfoWrapper>
       </CardContent>
     </Card>

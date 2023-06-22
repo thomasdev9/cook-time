@@ -30,7 +30,19 @@ export const getRecipeData = (recipe) => {
   return {
     title: recipe?.label,
     image: recipe?.image,
-    totalTime: `${recipe?.totalTime}'`,
+    totalTime: recipe?.totalTime,
     cuisineType: recipe?.cuisineType[0],
   };
+};
+
+export const formatTime = (totalTime) => {
+  if (totalTime === 0) {
+    return '5m';
+  } else if (totalTime < 60) {
+    return `${totalTime}m`;
+  } else {
+    const hours = Math.floor(totalTime / 60);
+    const minutes = totalTime % 60;
+    return `${hours}h ${minutes}m`;
+  }
 };
