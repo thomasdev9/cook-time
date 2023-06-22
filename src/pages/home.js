@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Typography, Box, Grid } from '@mui/material';
-import SearchBar from '../features/ui/search-bar';
+import { Grid, Box } from '@mui/material';
 import CreateCarousel from '../features/components/create-carousel';
 import { categoriesChips, getRecipesCards } from '../shared/setup/home';
 import { fetchRecommendations } from '../redux/slices/recommendationsSlice';
@@ -10,8 +9,6 @@ import CatalogLoader from '../features/content-loaders/catalog-loader';
 import CategoriesLoader from '../features/content-loaders/categories-loader';
 
 function Home() {
-  const [searchQuery, setSearchQuery] = useState('');
-  console.log(searchQuery);
   const dispatch = useDispatch();
   const recommendations = useSelector((state) => {
     const data = state.recommendations;
@@ -26,13 +23,6 @@ function Home() {
   return (
     <Box>
       <Grid container direction="column">
-        <Typography variant="subtitle1" sx={{ color: 'text.secondary' }}>
-          Hello,
-        </Typography>
-        <Typography variant="h4" gutterBottom>
-          What would you like to cook today?
-        </Typography>
-        <SearchBar setSearchQuery={setSearchQuery} />
         {isLoading ? (
           <CategoriesLoader />
         ) : (
