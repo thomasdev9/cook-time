@@ -11,3 +11,7 @@ body {
 .swiper-slide {
   width: fit-content !important;
 }
+
+a {
+  text-decoration: none;
+}

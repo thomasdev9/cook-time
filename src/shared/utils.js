@@ -26,12 +26,32 @@ export const getCategoryIcon = (iconName) => {
   return categoriesIcons[iconName];
 };
 
+export const getRecipeId = (uri) => {
+  if (uri === '') return 'undefined';
+  const id = uri.split('#recipe_');
+  if (id?.length > 1) return id[1];
+  return 'undefined';
+};
+
 export const getRecipeData = (recipe) => {
   return {
     title: recipe?.label,
     image: recipe?.image,
     totalTime: recipe?.totalTime,
     cuisineType: recipe?.cuisineType[0],
+    id: getRecipeId(recipe?.uri),
+  };
+};
+
+export const getSingleRecipeData = (recipe) => {
+  return {
+    title: recipe?.label,
+    image: recipe?.images?.REGULAR?.url,
+    totalTime: recipe?.totalTime,
+    cuisineType: recipe?.cuisineType[0],
+    ingredients: recipe?.ingredients,
+    healthLabels: recipe?.healthLabels,
+    calories: recipe?.calories,
   };
 };
 
