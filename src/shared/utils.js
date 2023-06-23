@@ -51,7 +51,7 @@ export const getSingleRecipeData = (recipe) => {
     cuisineType: recipe?.cuisineType[0],
     ingredients: recipe?.ingredients,
     healthLabels: recipe?.healthLabels,
-    calories: recipe?.calories,
+    digest: recipe?.digest,
   };
 };
 
@@ -65,4 +65,25 @@ export const formatTime = (totalTime) => {
     const minutes = totalTime % 60;
     return `${hours}h ${minutes}m`;
   }
+};
+
+export const formatIngredients = (ingredients) => {
+  return ingredients?.map((ingredient) => ({
+    image: ingredient?.image,
+    label: ingredient?.food,
+    value: `${ingredient?.quantity} ${ingredient.measure}`,
+  }));
+};
+
+export const formatHealthyLabels = (healthLabels) => {
+  return healthLabels?.map((label) => ({
+    label: label,
+  }));
+};
+
+export const formatDigest = (digest) => {
+  return digest?.map((item) => ({
+    label: item?.label,
+    value: `${Math.round(item?.total)} ${item?.unit}`,
+  }));
 };

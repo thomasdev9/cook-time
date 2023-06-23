@@ -6,6 +6,7 @@ import Topbar from './topbar';
 
 const wrapperStyles = {
   paddingTop: 2,
+  paddingBottom: 5,
 };
 
 function Wrapper() {

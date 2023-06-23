@@ -3,8 +3,9 @@ import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { Tabs, Tab } from '@mui/material';
 import { RecipesAPI } from '../api/recipes-api';
-import { getSingleRecipeData, formatTime } from '../shared/utils';
+import { getSingleRecipeData, formatTime, formatIngredients, formatHealthyLabels, formatDigest } from '../shared/utils';
 import { isEmpty } from 'lodash';
+import { getTabPanels } from '../shared/setup/single-recipe';
 
 const Container = styled.div`
   width: 100%;
@@ -100,9 +101,15 @@ function SingleRecipe() {
       <SectionWrapper>
         <Tabs aria-label="Tabs" onChange={handleTabChange} value={currentTabIndex}>
           <Tab label="Ingredients" />
+          <Tab label="Digest" />
           <Tab label="Health Labels" />
-          <Tab label="Nutrition Details" />
         </Tabs>
+        {getTabPanels({
+          ingredients: formatIngredients(data?.ingredients),
+          healthLabels: formatHealthyLabels(data?.healthLabels),
+          digest: formatDigest(data?.digest),
+          value: currentTabIndex,
+        })}
       </SectionWrapper>
     </Container>
   );
