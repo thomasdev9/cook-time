@@ -13,7 +13,7 @@ function Router() {
           <Route index element={<Home />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/recipes" element={<Recipes />} />
-          <Route path="/recipe" element={<SingleRecipe />} />
+          <Route path="/recipes/:id" element={<SingleRecipe />} />
         </Route>
       </Routes>
     </BrowserRouter>

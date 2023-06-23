@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardMedia, CardContent } from '@mui/material';
 import styled from 'styled-components';
 import { formatTime } from '../../shared/utils';
@@ -56,18 +57,20 @@ const InfoLabel = styled.div`
   flex-direction: row;
 `;
 
-function CardComponent({ title, totalTime, cuisineType, image }) {
+function CardComponent({ title, totalTime, cuisineType, image, id }) {
   return (
-    <Card sx={style}>
-      <CardMedia component="img" alt="card-img" height="125" image={image}></CardMedia>
-      <CardContent>
-        <Title>{title}</Title>
-        <InfoWrapper>
-          <CategoryLabel>{cuisineType}</CategoryLabel>
-          <InfoLabel>{formatTime(totalTime)}</InfoLabel>
-        </InfoWrapper>
-      </CardContent>
-    </Card>
+    <Link to={`/recipes/${id}`} state={{ id, totalTime, cuisineType, image }}>
+      <Card sx={style}>
+        <CardMedia component="img" alt="card-img" height="125" image={image}></CardMedia>
+        <CardContent>
+          <Title>{title}</Title>
+          <InfoWrapper>
+            <CategoryLabel>{cuisineType}</CategoryLabel>
+            <InfoLabel>{formatTime(totalTime)}</InfoLabel>
+          </InfoWrapper>
+        </CardContent>
+      </Card>
+    </Link>
   );
 }
 
