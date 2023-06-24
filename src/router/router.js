@@ -12,7 +12,7 @@ function Router() {
         <Route element={<Wrapper />}>
           <Route index element={<Home />} />
           <Route path="/categories" element={<Categories />} />
-          <Route path="/recipes" element={<Recipes />} />
+          <Route path="/:category" element={<Recipes />} />
           <Route path="/recipes/:id" element={<SingleRecipe />} />
         </Route>
       </Routes>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import SearchBar from './search-bar';
 
@@ -67,7 +68,9 @@ function Topbar() {
   return (
     <Container>
       <Wrapper>
-        <Logo>Cook Time</Logo>
+        <Link to="/">
+          <Logo>Cook Time</Logo>
+        </Link>
         <SearchBar />
         <CreatorWrapper>
           <CreatorInfo>Developed by</CreatorInfo>
