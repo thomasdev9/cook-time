@@ -14,7 +14,7 @@ const style = {
 
 function ChipComponent({ label, variant = 'outlined' }) {
   return (
-    <Link to={`/${label}`} state={{ category: label }}>
+    <Link to={`/recipes/${label}`} state={{ category: label }}>
       <Chip label={label} variant={variant} sx={style} avatar={<Avatar src={getCategoryIcon(label)} alt={label} />} />
     </Link>
   );
