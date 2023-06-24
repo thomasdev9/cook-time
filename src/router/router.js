@@ -4,6 +4,7 @@ import Home from '../pages/home';
 import Categories from '../pages/categories';
 import Recipes from '../pages/recipes';
 import SingleRecipe from '../pages/single-recipe';
+import NotFound from '../pages/not-found';
 
 function Router() {
   return (
@@ -12,8 +13,9 @@ function Router() {
         <Route element={<Wrapper />}>
           <Route index element={<Home />} />
           <Route path="/categories" element={<Categories />} />
-          <Route path="/:category" element={<Recipes />} />
+          <Route path="recipes/:category" element={<Recipes />} />
           <Route path="/recipes/:id" element={<SingleRecipe />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>
