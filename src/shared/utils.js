@@ -1,7 +1,7 @@
 import Pizza from '../shared/assets/categories-icons/pizza.png';
 import Breakfast from '../shared/assets/categories-icons/breakfast.png';
 import Burger from '../shared/assets/categories-icons/burger.png';
-import Desert from '../shared/assets/categories-icons/desert.png';
+import Dessert from '../shared/assets/categories-icons/desert.png';
 import FishFood from '../shared/assets/categories-icons/fish-food.png';
 import Salad from '../shared/assets/categories-icons/salad.png';
 import Spaghetti from '../shared/assets/categories-icons/spaghetti.png';
@@ -13,7 +13,7 @@ const categoriesIcons = {
   pizza: Pizza,
   breakfast: Breakfast,
   burger: Burger,
-  desert: Desert,
+  dessert: Dessert,
   fishfood: FishFood,
   salad: Salad,
   spaghetti: Spaghetti,

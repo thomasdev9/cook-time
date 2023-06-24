@@ -2,6 +2,9 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { RecipesAPI } from '../../api/recipes-api';
 
 const initialState = {
+  pizza: {
+    data: {},
+  },
   steak: {
     data: {},
   },
@@ -11,7 +14,7 @@ const initialState = {
   burger: {
     data: {},
   },
-  desert: {
+  dessert: {
     data: {},
   },
   vegan: {
