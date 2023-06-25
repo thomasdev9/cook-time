@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Container } from '@mui/material';
 import Topbar from './topbar';
+import Footer from './footer';
 
 const wrapperStyles = {
   paddingTop: 2,
@@ -17,6 +18,7 @@ function Wrapper() {
       <Container maxWidth="sm" sx={wrapperStyles}>
         <Outlet />
       </Container>
+      <Footer />
     </React.Fragment>
   );
 }
