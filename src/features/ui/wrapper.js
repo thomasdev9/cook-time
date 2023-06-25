@@ -8,6 +8,7 @@ import Footer from './footer';
 const wrapperStyles = {
   paddingTop: 2,
   paddingBottom: 5,
+  minHeight: '100vh',
 };
 
 function Wrapper() {

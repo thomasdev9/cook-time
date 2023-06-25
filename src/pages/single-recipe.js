@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+import RecipeLoader from '../features/content-loaders/recipe-loader';
 import { Tabs, Tab } from '@mui/material';
 import { RecipesAPI } from '../api/recipes-api';
 import { getSingleRecipeData, formatTime, formatIngredients, formatHealthyLabels, formatDigest } from '../shared/utils';
@@ -71,14 +72,25 @@ const SectionWrapper = styled.div`
   width: 100%;
 `;
 
+const LoadingWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 25px 0px;
+`;
+
 function SingleRecipe() {
   const location = useLocation();
   const id = location.state.id;
   const [data, setData] = useState({});
   const [currentTabIndex, setCurrentTabIndex] = useState(0);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    RecipesAPI.getRecipeById({ id }).then((recipe) => setData(getSingleRecipeData(recipe?.recipe)));
+    RecipesAPI.getRecipeById({ id }).then((recipe) => {
+      setData(getSingleRecipeData(recipe?.recipe));
+      setLoading(false);
+    });
   }, []);
 
   const handleTabChange = (event, tabIndex) => {
@@ -89,29 +101,37 @@ function SingleRecipe() {
   if (isEmpty(data)) return <div></div>;
 
   return (
-    <Container>
-      <MainImage src={data?.image} alt="recipe-image" />
-      <HeaderWrapper>
-        <Title>{data?.title}</Title>
-        <InfoWrapper>
-          <InfoLabel>{data.cuisineType}</InfoLabel>
-          <InfoLabel>{formatTime(data.totalTime)}</InfoLabel>
-        </InfoWrapper>
-      </HeaderWrapper>
-      <SectionWrapper>
-        <Tabs aria-label="Tabs" onChange={handleTabChange} value={currentTabIndex}>
-          <Tab label="Ingredients" />
-          <Tab label="Digest" />
-          <Tab label="Health Labels" />
-        </Tabs>
-        {getTabPanels({
-          ingredients: formatIngredients(data?.ingredients),
-          healthLabels: formatHealthyLabels(data?.healthLabels),
-          digest: formatDigest(data?.digest),
-          value: currentTabIndex,
-        })}
-      </SectionWrapper>
-    </Container>
+    <>
+      {!isLoading ? (
+        <Container>
+          <MainImage src={data?.image} alt="recipe-image" />
+          <HeaderWrapper>
+            <Title>{data?.title}</Title>
+            <InfoWrapper>
+              <InfoLabel>{data.cuisineType}</InfoLabel>
+              <InfoLabel>{formatTime(data.totalTime)}</InfoLabel>
+            </InfoWrapper>
+          </HeaderWrapper>
+          <SectionWrapper>
+            <Tabs aria-label="Tabs" onChange={handleTabChange} value={currentTabIndex}>
+              <Tab label="Ingredients" />
+              <Tab label="Digest" />
+              <Tab label="Health Labels" />
+            </Tabs>
+            {getTabPanels({
+              ingredients: formatIngredients(data?.ingredients),
+              healthLabels: formatHealthyLabels(data?.healthLabels),
+              digest: formatDigest(data?.digest),
+              value: currentTabIndex,
+            })}
+          </SectionWrapper>
+        </Container>
+      ) : (
+        <LoadingWrapper>
+          <RecipeLoader />
+        </LoadingWrapper>
+      )}
+    </>
   );
 }
 
