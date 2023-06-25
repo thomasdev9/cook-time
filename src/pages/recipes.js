@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import styled from 'styled-components';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import styled, { css } from 'styled-components';
 import { Box, Grid } from '@mui/material';
-import { fetchRecipesByCategory } from '../redux/slices/categoriesSlice';
 import CardComponent from '../features/ui/card-component';
 import CatalogLoader from '../features/content-loaders/catalog-loader';
 import { getRecipeData } from '../shared/utils';
+import { RecipesAPI } from '../api/recipes-api';
+import { categories } from '../shared/setup/recipes';
 
 const Container = styled.div`
   display: grid;
@@ -27,9 +27,14 @@ const Container = styled.div`
 const Header = styled.h6`
   font-size: 24px;
   color: rgb(51, 51, 51);
-  text-transform: capitalize;
   font-weight: 500;
   padding: 15px;
+
+  ${(props) =>
+    props.capitalize &&
+    css`
+      text-transform: capitalize;
+    `}
 
   @media only screen and (max-width: 360px) {
     padding: 15px 0px;
@@ -37,27 +42,23 @@ const Header = styled.h6`
 `;
 
 function Recipes() {
-  const location = useLocation();
-  const { category } = location.state;
-  const dispatch = useDispatch();
-  const data = useSelector((state) => {
-    if (category && category !== '') {
-      return state?.categories[category]?.data?.hits;
-    }
-    return [];
-  });
-  const isLoading = useSelector((state) => state.categories.loading);
+  const { query } = useParams();
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (category) {
-      dispatch(fetchRecipesByCategory({ category }));
-    }
+    RecipesAPI.getRecipes({ query }).then((res) => {
+      setData(res?.hits);
+      setIsLoading(false);
+    });
   }, []);
+
+  const isCategory = (query) => categories.includes(query);
 
   return (
     <Box>
       <Grid container direction="column">
-        <Header>{category}</Header>
+        <Header capitalize={isCategory(query)}>{isCategory(query) ? query : `Search results for ${query}`}</Header>
         {!isLoading ? (
           <Container>
             {data?.map((item, index) => (

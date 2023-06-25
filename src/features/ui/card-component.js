@@ -59,7 +59,7 @@ const InfoLabel = styled.div`
 
 function CardComponent({ title, totalTime, cuisineType, image, id }) {
   return (
-    <Link to={`/recipes/${id}`} state={{ id, totalTime, cuisineType, image }}>
+    <Link to={`/recipe/${id}`} state={{ id, totalTime, cuisineType, image }}>
       <Card sx={style}>
         <CardMedia component="img" alt="card-img" height="125" image={image}></CardMedia>
         <CardContent>
