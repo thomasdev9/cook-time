@@ -80,7 +80,7 @@ function Recipes() {
       setData(res?.hits);
       setIsLoading(false);
     });
-  }, []);
+  }, [query]);
 
   const isCategory = (query) => categories.includes(query);
 
