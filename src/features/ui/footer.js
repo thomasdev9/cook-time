@@ -88,7 +88,7 @@ const UsefullLinksWrapper = styled.div`
   }
 `;
 
-const UsefullLink = styled.a`
+const UsefullLink = styled.span`
   font-size: 14px;
   color: rgb(51, 51, 51);
   font-weight: 500;

@@ -71,7 +71,7 @@ export const formatIngredients = (ingredients) => {
   return ingredients?.map((ingredient) => ({
     image: ingredient?.image,
     label: ingredient?.food,
-    value: `${ingredient?.quantity} ${ingredient.measure}`,
+    value: `${ingredient?.quantity} ${ingredient.measure === '<unit>' ? '' : ingredient.measure}`,
   }));
 };
 
@@ -86,4 +86,8 @@ export const formatDigest = (digest) => {
     label: item?.label,
     value: `${Math.round(item?.total)} ${item?.unit}`,
   }));
+};
+
+export const formatRecommendations = (data) => {
+  return [data.recommended, data.recently, data.popular, data.trending];
 };

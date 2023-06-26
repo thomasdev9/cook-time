@@ -42,7 +42,7 @@ const CreatorInfo = styled.p`
   font-weight: 400;
 
   ${(props) =>
-    props.creator &&
+    props.creator === 'visible' &&
     css`
       font-size: 16px;
       font-weight: 700;
@@ -74,7 +74,7 @@ function Topbar() {
         <SearchBar />
         <CreatorWrapper>
           <CreatorInfo>Developed by</CreatorInfo>
-          <CreatorInfo creator>Thomas Poulakis</CreatorInfo>
+          <CreatorInfo creator="visible">Thomas Poulakis</CreatorInfo>
         </CreatorWrapper>
       </Wrapper>
     </Container>
