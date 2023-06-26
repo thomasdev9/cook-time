@@ -7,13 +7,11 @@ import { fetchRecommendations } from '../redux/slices/recommendationsSlice';
 import { isEmpty } from 'lodash';
 import CatalogLoader from '../features/content-loaders/catalog-loader';
 import CategoriesLoader from '../features/content-loaders/categories-loader';
+import { formatRecommendations } from '../shared/utils';
 
 function Home() {
   const dispatch = useDispatch();
-  const recommendations = useSelector((state) => {
-    const data = state.recommendations;
-    return [data.recommended, data.recently, data.popular, data.trending];
-  });
+  const recommendations = useSelector((state) => state.recommendations);
   const isLoading = useSelector((state) => state.recommendations.loading);
 
   useEffect(() => {
@@ -31,7 +29,7 @@ function Home() {
         {isLoading ? (
           <CatalogLoader />
         ) : (
-          recommendations?.map(
+          formatRecommendations(recommendations)?.map(
             (rec, index) =>
               !isEmpty(rec.data) && (
                 <CreateCarousel
